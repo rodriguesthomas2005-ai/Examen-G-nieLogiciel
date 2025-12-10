@@ -2,52 +2,35 @@ package agenda;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.Temporal;
 
 public class Termination {
+    //attributs
+    private final LocalDate myStart;
+    private final ChronoUnit myFrequency;
+    private final LocalDate myTerminationDate;
+    private final long myNumberOfOccurrences;
+
+    //Constructeur
+    public Termination(LocalDate start, ChronoUnit frequency, LocalDate terminationInclusive) {
+        this.myStart = start;
+        this.myFrequency = frequency;
+        this.myTerminationDate = terminationInclusive;
+        long diff = frequency.between(start, terminationInclusive);
+        this.myNumberOfOccurrences = diff + 1;
+    }
+
+    public Termination(LocalDate start, ChronoUnit frequency, long numberOfOccurrences) {
+        this.myStart = start;
+        this.myFrequency = frequency;
+        this.myNumberOfOccurrences = numberOfOccurrences;
+        this.myTerminationDate = start.plus(numberOfOccurrences - 1, frequency);
+    }
 
     public LocalDate terminationDateInclusive() {
-        // TODO : implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        return myTerminationDate;
     }
 
     public long numberOfOccurrences() {
-        // TODO : implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        return myNumberOfOccurrences;
     }
-
-
-    /**
-     * Constructs a  termination at a given date
-     * @param start the start time of this event
-     * @param frequency one of :
-     * <UL>
-     * <LI>ChronoUnit.DAYS for daily repetitions</LI>
-     * <LI>ChronoUnit.WEEKS for weekly repetitions</LI>
-     * <LI>ChronoUnit.MONTHS for monthly repetitions</LI>
-     * </UL>
-     * @param terminationInclusive the date when this event ends
-     * @see ChronoUnit#between(Temporal, Temporal)
-     */
-    public Termination(LocalDate start, ChronoUnit frequency, LocalDate terminationInclusive) {
-        // TODO : implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
-    }
-
-    /**
-     * Constructs a fixed termination event ending after a number of iterations
-     * @param start the start time of this event
-     * @param frequency one of :
-     * <UL>
-     * <LI>ChronoUnit.DAYS for daily repetitions</LI>
-     * <LI>ChronoUnit.WEEKS for weekly repetitions</LI>
-     * <LI>ChronoUnit.MONTHS for monthly repetitions</LI>
-     * </UL>
-     * @param numberOfOccurrences the number of occurrences of this repetitive event
-     */
-    public Termination(LocalDate start, ChronoUnit frequency, long numberOfOccurrences) {
-        // TODO : implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
-    }
-
 }

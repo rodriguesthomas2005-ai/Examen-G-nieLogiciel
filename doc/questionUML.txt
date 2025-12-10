@@ -1,2 +1,12 @@
-Ecrire ici votre réponse à la question UML.
+L'UML 1 utilise l'héritage et l'UML 2 utilise la composition pour la gestion de la 
+récurrence. 
+La solution par héritage permet une typologie claire (classes distinctes) mais elle est rigide et ne permet pas 
+à un événement simple de devenir répétitif dynamiquement. 
+Cependant, Repetition est modélisé par la solution par composition (UML 2) comme un attribut optionnel. 
+Cette approche est flexible et permet la modification de l'événement sans changer son type. 
+Même si la classe Event devient plus lourde (délégation), la composition garantit un couplage plus faible 
+entre les composants Event, Repetition et Termination. 
+
+Dans un contexte d'ingénierie logicielle permettant l'évolution, la composition (UML 2) est supérieure 
+et préférable.
 
